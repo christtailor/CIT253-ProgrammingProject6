@@ -19,6 +19,10 @@ app.config(function($routeProvider) {
           templateUrl : 'partials/edit_cars.html',    // edit a car record
           controller : 'editCtrl'
       })
+      .when('/edit_data', {
+          templateUrl : 'partials/edit_cars.html',    // edit a car record
+          controller : 'editCtrl'
+      })
       .otherwise({
           redirectTo: 'partials/all_cars.html'        // any other URL goes to home
       });
@@ -80,7 +84,6 @@ app.controller('editCtrl', function($scope, $http) {  // edit miles or price of 
 	   url = "/updateCar";
 	   $http.post(url, info)
           .then(function (response) {
-            $scope.status = response.data; 
             $scope.student = response.data
             console.log(response.data) //print status of request
 
@@ -89,18 +92,25 @@ app.controller('editCtrl', function($scope, $http) {  // edit miles or price of 
 	   
    }
    
-   $scope.deleteRecord = function() {
+   $scope.changeRecord = function() {
 	   
-	   var cid = $scope.cars[$scope.carIndex].cid
+	   var car = $scope.student
 	   
-	   url = "/deleteCar?cid=" + cid;   // concat for get request
-	   //console.log(url)
-	   $http.get(url)
+	   var info = {
+	      major : car.major,
+	      midterm : car.midterm,
+	      final : car.final,
+	      sid : car.sid,
+	  }
+
+	   
+	   url = "/edit_data";
+	   $http.post(url, info)
           .then(function (response) {
-			 //$scope.car = response.data;
-			 console.log($scope.car)
-			 $scope.maxIndex = $scope.cars.length-1;
-			 $scope.car = $scope.cars[$scope.carIndex];
+            $scope.status = response.data; 
+            $scope.student = response.data
+            console.log(response.data) //print status of request
+
       });
 	  
    };

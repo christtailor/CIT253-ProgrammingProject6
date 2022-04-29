@@ -61,11 +61,43 @@ app.post('/updateCar', function(req, res) {   // Update miles and price
 		    res.send('No student with a sid of ' + update_sid);
 		}
 		else {
-			console.log(student)
 			res.send(student)
 			
 	   }
     });        
+
+});
+
+app.post('/edit_data', function(req, res) {   // Update miles and price
+
+    var student_id = req.body.sid;    // get posted properties
+
+    console.log("Student Data"+student_id)
+
+    var updateMajpr = req.body.major;
+	var updateMidterm = req.body.midterm;
+	var updateFinal = req.body.final;
+    
+    Car.findOne( {sid: student_id}, function(err, students) {  
+		if (err) {
+		    res.status(500).send(err);
+		}
+		else if (!students) {
+		    res.send('No car with a cid of ' + update_cid);
+		}
+		else {
+			students.major = updateMajpr;
+			students.midterm = updateMidterm;
+			students.final = updateFinal;
+		
+			students.save(function (err) {
+                if(err) {
+                    res.status(500).send(err);
+                }
+            });
+		    res.send("Update successful");
+	   }
+    });  
 
 });
 
