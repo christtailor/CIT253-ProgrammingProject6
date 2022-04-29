@@ -64,47 +64,28 @@ app.controller('addCtrl', function($scope, $http) {
 app.controller('editCtrl', function($scope, $http) {  // edit miles or price of record
    
    // start with the first car object in the array of cars
-   $scope.carIndex = 0;   // array index of a particular car object
-    
-   $http.get("/showAll")
-     .then(function (response) {
-	    $scope.cars = response.data;  
-        $scope.car = $scope.cars[$scope.carIndex];
-		$scope.maxIndex = $scope.cars.length-1;  // index of last car object
-     });
-  
-   $scope.nextRecord = function() {
-	   $scope.carIndex += 1;        // go to next car object
-	   if($scope.carIndex > $scope.maxIndex) 
-	        $scope.carIndex = $scope.maxIndex;
-			
-	   $scope.car = $scope.cars[$scope.carIndex];
-   };
-   
-   $scope.previousRecord = function() {
-	   $scope.carIndex -= 1;        // go to previous car index
-	   if($scope.carIndex < 0) 
-	        $scope.carIndex = 0;
-			
-	   $scope.car = $scope.cars[$scope.carIndex];
-   };
-   
+
    
    $scope.updateRecord = function() {
 	   
-	   var car = $scope.cars[$scope.carIndex]
+	   var car = $scope.car
+       console.log(car)
 	   
 	   var info = {
-	      cid : car.cid,
-	      miles : car.miles,
-	      price : car.price
+	      sid : car.sid,
 	  }
+
+      console.log(info)
 	   
 	   url = "/updateCar";
 	   $http.post(url, info)
           .then(function (response) {
-			 $scope.car = $scope.cars[$scope.carIndex];
+            $scope.status = response.data; 
+            $scope.student = response.data
+            console.log(response.data) //print status of request
+
       });
+      
 	   
    }
    

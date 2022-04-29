@@ -49,27 +49,21 @@ app.post('/addCar', function(req, res){    // Create a new car object
 
 app.post('/updateCar', function(req, res) {   // Update miles and price
 
-    var update_cid = req.body.cid;    // get posted properties
-    var updatePrice = req.body.price;
-	var updateMiles = req.body.miles;
+    var update_sid = req.body.sid;    // get posted properties
+
+
     
-    Car.findOne( {cid: update_cid}, function(err, car) {  
+    Car.findOne( {sid: update_sid}, function(err, student) {  
 		if (err) {
 		    res.status(500).send(err);
 		}
-		else if (!car) {
-		    res.send('No car with a cid of ' + update_cid);
+		else if (!student) {
+		    res.send('No student with a sid of ' + update_sid);
 		}
 		else {
-			car.miles = updateMiles;
-			car.price = updatePrice;
-		
-			car.save(function (err) {
-                if(err) {
-                    res.status(500).send(err);
-                }
-            });
-		    res.send("Update successful");
+			console.log(student)
+			res.send(student)
+			
 	   }
     });        
 

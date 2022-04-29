@@ -1,7 +1,7 @@
           
             <h4>Edit Record {{carIndex + 1}} of {{maxIndex + 1}}</h4>
             
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="cid">CID:</label>
                 <input type="text" class="form-control" id="cid" ng-model="car.cid" readonly>
            </div>
@@ -28,10 +28,32 @@
            <div class="form-group">
                 <label for="dealer_id">Dealer ID:</label>
                 <input type="text" class="form-control" id="dealer_id" ng-model="car.dealer_id" readonly>
-           </div>
-           <button type="button" class="btn btn-primary" ng-click="previousRecord()"> < previous </button> &nbsp; 
-           <button type="button" class="btn btn-primary" ng-click="nextRecord()"> next ></button> &nbsp; 
-           <button type="button" class="btn btn-primary" ng-click="updateRecord()">Update</button> &nbsp; 
-           <button type="button" class="btn btn-primary" ng-click="deleteRecord()">Delete</button>
+           </div> -->
+           <div class="form-group">
+               <label for="model">Student ID:</label>
+               <input type="text" class="form-control"  ng-model="car.sid" >
+          </div>
+          <button type="button" class="btn btn-primary" ng-click="updateRecord()"> Get Info</button> &nbsp; 
+          <br><br>
+          <div class="form-group">
+               <label for="make">Last Name:</label>
+               <input type="text" class="form-control"  ng-model="student.last_name" readonly>
+          </div>
+          <div class="form-group">
+               <label for="model">Major:</label>
+               <input type="text" class="form-control"  ng-model="student.major" readonly>
+          </div>
+          <div class="form-group">
+               <label for="miles">Midterm:</label>
+               <input type="text" class="form-control"  ng-model="student.midterm">
+          </div>
+          <div class="form-group">
+               <label for="price">Final:</label>
+               <input type="text" class="form-control"  ng-model="student.final">
+          </div>
+           <!-- <button type="button" class="btn btn-primary" ng-click="previousRecord()"> < previous </button> &nbsp; 
+           <button type="button" class="btn btn-primary" ng-click="nextRecord()"> next ></button> &nbsp;  -->
+           <button type="button" class="btn btn-primary" ng-click="getRecord()">Update</button> &nbsp; 
+           <!-- <button type="button" class="btn btn-primary" ng-click="deleteRecord()">Delete</button> -->
         <br><br>
 
