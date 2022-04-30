@@ -1,30 +1,30 @@
 
-var app = angular.module('carsApp', ['ngRoute']);
+var app = angular.module('studentsApp', ['ngRoute']);
 
 app.config(function($routeProvider) {
     $routeProvider 
       .when('/', {
-          templateUrl : 'partials/all_cars.html',    // route for the home page
+          templateUrl : 'partials/all_students.html',    // route for the home page
           controller : 'allCtrl'
       })
-      .when('/all_cars', {
-          templateUrl : 'partials/all_cars.html',
+      .when('/all_students', {
+          templateUrl : 'partials/all_students.html',
           controller : 'allCtrl'
       })
-      .when('/add_car', {
-          templateUrl : 'partials/add_car.html',    // add a car to db
+      .when('/add_student', {
+          templateUrl : 'partials/add_student.html',    // add a student to db
           controller : 'addCtrl'
       })
-      .when('/edit_cars', {
-          templateUrl : 'partials/edit_cars.html',    // edit a car record
+      .when('/edit_students', {
+          templateUrl : 'partials/edit_students.html',    // edit a student record
           controller : 'editCtrl'
       })
       .when('/edit_data', {
-          templateUrl : 'partials/edit_cars.html',    // edit a car record
+          templateUrl : 'partials/edit_students.html',    // edit a student record
           controller : 'editCtrl'
       })
       .otherwise({
-          redirectTo: 'partials/all_cars.html'        // any other URL goes to home
+          redirectTo: 'partials/all_students.html'        // any other URL goes to home
       });
 });
 
@@ -32,17 +32,16 @@ app.config(function($routeProvider) {
           /*   a controller for each page  */
 app.controller('allCtrl', function($scope, $http) {
     
-   $http.get("/showAll")          // get all the cars 
+   $http.get("/showAll")          // get all the students 
      .then(function (response) {
-	    $scope.cars = response.data;  
+	    $scope.students = response.data;  
      });
 });
 
 
 app.controller('addCtrl', function($scope, $http) {
   
-   $scope.addRecord = function() {      // add a car
-       rnd_id = Math.floor(Math.random() * 1000) + 100; // random 3-digit car id > 100
+   $scope.addRecord = function() {      // add a student
 	   
 	   var info = {
          sid : $scope.sid,       // set up data object
@@ -51,7 +50,7 @@ app.controller('addCtrl', function($scope, $http) {
           major : $scope.major
 	   }
 	   
-	   url = "/addCar"
+	   url = "/addStudent"
 	   
 	   $http.post(url, info)                // post the object data
           .then(function (response) {
@@ -67,21 +66,20 @@ app.controller('addCtrl', function($scope, $http) {
 
 app.controller('editCtrl', function($scope, $http) {  // edit miles or price of record
    
-   // start with the first car object in the array of cars
+   // start with the first student object in the array of students
 
    
-   $scope.updateRecord = function() {
+   $scope.getRecord = function() {
 	   
-	   var car = $scope.car
-       console.log(car)
+	   var student = $scope.student
 	   
 	   var info = {
-	      sid : car.sid,
+	      sid : student.sid,
 	  }
 
       console.log(info)
 	   
-	   url = "/updateCar";
+	   url = "/getRecord";
 	   $http.post(url, info)
           .then(function (response) {
             $scope.student = response.data
@@ -94,13 +92,13 @@ app.controller('editCtrl', function($scope, $http) {  // edit miles or price of 
    
    $scope.changeRecord = function() {
 	   
-	   var car = $scope.student
+	   var student = $scope.student
 	   
 	   var info = {
-	      major : car.major,
-	      midterm : car.midterm,
-	      final : car.final,
-	      sid : car.sid,
+	      major : student.major,
+	      midterm : student.midterm,
+	      final : student.final,
+	      sid : student.sid,
 	  }
 
 	   

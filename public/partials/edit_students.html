@@ -1,0 +1,30 @@
+          
+            <h4>Edit Record</h4>
+            
+           <div class="form-group">
+               <label for="model">Student ID:</label>
+               <input type="text" class="form-control"  ng-model="student.sid" >
+          </div>
+          <button type="button" class="btn btn-primary" ng-click="getRecord()"> Get Info</button> &nbsp; 
+          <br><br>
+          <div class="form-group">
+               <label for="make">Last Name:</label>
+               <input type="text" class="form-control"  ng-model="student.last_name" readonly>
+          </div>
+          <div class="form-group">
+               <label for="model">Major:</label>
+               <input type="text" class="form-control"  ng-model="student.major">
+          </div>
+          <div class="form-group">
+               <label for="miles">Midterm:</label>
+               <input type="text" class="form-control"  ng-model="student.midterm">
+          </div>
+          <div class="form-group">
+               <label for="price">Final:</label>
+               <input type="text" class="form-control"  ng-model="student.final">
+          </div>
+           <button type="button" class="btn btn-primary" ng-click="changeRecord()">Update</button> &nbsp; 
+        <br><br>
+        {{status}}
+        <br><br>
+

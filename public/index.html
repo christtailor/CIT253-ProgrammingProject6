@@ -1,9 +1,5 @@
-<html>
-<head><title>cars spa</title>
-</head><body>
-
 <!DOCTYPE html>
-<html><head><title>cars too</title>
+<html><head><title>Student Database</title>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -23,9 +19,9 @@
     </div>
     <div>
        <ul class="nav navbar-nav">
-           <li class="active"><a href="#all_cars">Home</a></li>
-           <li><a href="#add_car">Add a Car</a></li>
-           <li><a href="#edit_cars">Edit car data</a></li>
+           <li class="active"><a href="#all_students">Home</a></li>
+           <li><a href="#add_student">Add a Student</a></li>
+           <li><a href="#edit_students">Edit Student data</a></li>
        </ul>
     </div>
 </div>
@@ -34,13 +30,13 @@
 <div class="container">
 <p id='time_loaded'></p>   <!-- time of initial page load  -->
 
-   <div ng-app = "carsApp">     <!-- module  -->
+   <div ng-app = "studentsApp">     <!-- module  -->
 
        <div id="main">
             <div ng-view></div> <!-- partial pages substituted here -->
        </div>
 
-   </div>   <!-- end carsApp -->
+   </div>   <!-- end studentsApp -->
 
 
    <div class="panel-footer">
