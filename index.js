@@ -1,4 +1,3 @@
-/*   database: makewaves    Create, Retrieve, Update, Delete  ---  CRUD    */
 var express = require('express');
 var app = express();
 
@@ -6,7 +5,7 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json())               // <-- angularjs sends json data 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-var Student = require('./modules/Student.js');  // our Car model
+var Student = require('./modules/Student.js');
 
 app.use(express.static('public'))       // serve static files
 
@@ -24,7 +23,7 @@ app.use('/showAll', function(req, res) {   // Retrieve all
 })
 
 
-app.post('/addStudent', function(req, res){    // Create a new car object
+app.post('/addStudent', function(req, res){    
 	var newStudent = new Student ({               
 		sid: req.body.sid,     
        last_name: req.body.last_name,
@@ -35,7 +34,7 @@ app.post('/addStudent', function(req, res){    // Create a new car object
 		
 	});
 
-	newStudent.save( function(err) {       // same the new car
+	newStudent.save( function(err) { 
 		if (err) {
 		    res.status(500).send(err);
 		}
@@ -47,7 +46,7 @@ app.post('/addStudent', function(req, res){    // Create a new car object
 
 
 
-app.post('/getRecord', function(req, res) {   // Update miles and price
+app.post('/getRecord', function(req, res) {   
 
     var update_sid = req.body.sid;    // get posted properties
 
@@ -68,12 +67,9 @@ app.post('/getRecord', function(req, res) {   // Update miles and price
 
 });
 
-app.post('/edit_data', function(req, res) {   // Update miles and price
+app.post('/edit_data', function(req, res) { 
 
     var student_id = req.body.sid;    // get posted properties
-
-    console.log("Student Data"+student_id)
-
     var updateMajor = req.body.major;
 	var updateMidterm = req.body.midterm;
 	var updateFinal = req.body.final;

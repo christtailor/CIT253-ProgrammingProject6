@@ -64,10 +64,7 @@ app.controller('addCtrl', function($scope, $http) {
 });
 
 
-app.controller('editCtrl', function($scope, $http) {  // edit miles or price of record
-   
-   // start with the first student object in the array of students
-
+app.controller('editCtrl', function($scope, $http) {
    
    $scope.getRecord = function() {
 	   
@@ -76,9 +73,6 @@ app.controller('editCtrl', function($scope, $http) {  // edit miles or price of 
 	   var info = {
 	      sid : student.sid,
 	  }
-
-      console.log(info)
-	   
 	   url = "/getRecord";
 	   $http.post(url, info)
           .then(function (response) {
